@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+    php-app:
+        build:
+            context: ..
+            dockerfile: docker/Dockerfile
+        volumes:
+            - ../src:/var/www/html/
+            - ../src/vendor:/var/www/html/vendor
+            - ./xdebug/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+        ports:
+            - "9004:9003"
+
+    nginx:
+        image: nginx:latest
+        ports:
+            - "8000:80"
+        volumes:
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php-app
+
+    php-test:
+        build:
+            context: ..
+            dockerfile: docker/Dockerfile
+        volumes:
+            - ../src:/var/www/html/
+            - ../src/vendor:/var/www/html/vendor
+            - ./xdebug/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+            - ./script/entrypoint.sh:/usr/local/bin/entrypoint.sh
+        entrypoint: /usr/local/bin/entrypoint.sh
+        depends_on:
+            - php-app
+
+    curl-service:
+        image: curlimages/curl:latest
+        container_name: curl-service
+        command: ["tail", "-f", "/dev/null"]
+        depends_on:
+            - php-app

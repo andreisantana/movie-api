@@ -1,0 +1,28 @@
+{
+    "name": "myvendor/movieapi",
+    "version": "1.0",
+    "description": "A PHP project to manage movie data.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Application\\": "Application",
+            "Infrastructure\\": "Infrastructure",
+            "Domain\\": "Domain",            
+            "Domain\\Repository\\": "src/Domain/Repository/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrei Santana",
+            "email": "andreisantana@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    }
+}

@@ -1,0 +1,11 @@
+/vendor/
+/src/vendor/
+
+
+/phpunit.xml
+/src/phpunit-*.xml
+
+.env
+
+.DS_Store
+Thumbs.db
