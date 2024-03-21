@@ -98,17 +98,23 @@ cd movie-api
 docker-compose up -d
 ```
 
+5. Install project dependencies by running Composer inside the `php-app` container:
+
+```
+docker-compose exec php-app composer install
+```
+
 Now you can access the API via `http://localhost:8000`.
 
 ## Endpoints
 
-- `/top_rated`
-- `/top_rated?page={page_number}`
-- `/movies/{movie_id}`
-- `/movies/{movie_id}/similar`
-- `/movies/{movie_id}/similar?page={page_number}`
-- `/search?movie={movie_name}`
-- `/genres`
+-   `/top_rated`
+-   `/top_rated?page={page_number}`
+-   `/movies/{movie_id}`
+-   `/movies/{movie_id}/similar`
+-   `/movies/{movie_id}/similar?page={page_number}`
+-   `/search?movie={movie_name}`
+-   `/genres`
 
 ## Tests
 
@@ -128,6 +134,6 @@ The project adopts best practices in software development, including coding stan
 
 ## Author
 
-- **Andrei Santana**
-  - [LinkedIn](https://www.linkedin.com/in/andreisantana/)
-  - Email: <andreisantana@gmail.com>
+-   **Andrei Santana**
+    -   [LinkedIn](https://www.linkedin.com/in/andreisantana/)
+    -   Email: <andreisantana@gmail.com>
